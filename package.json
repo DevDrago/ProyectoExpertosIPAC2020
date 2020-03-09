@@ -1,0 +1,23 @@
+{
+  "name": "proyectoexpertosipac2020",
+  "version": "1.0.0",
+  "description": "Proyecto para la clase de Sistemas Expertos impartida por el Ing. Erick Vladimir Marín en el primer periodo 2020.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevDrago/ProyectoExpertosIPAC2020.git"
+  },
+  "author": "Gerardo Méndez - 20111013326",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DevDrago/ProyectoExpertosIPAC2020/issues"
+  },
+  "homepage": "https://github.com/DevDrago/ProyectoExpertosIPAC2020#readme",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1"
+  }
+}

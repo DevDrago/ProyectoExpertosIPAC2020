@@ -1,0 +1,146 @@
+<%- include('../layout/header') %>
+
+<header>
+    <%- include('../layout/head') %>
+</header>
+
+<!-- Carousel -->
+<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+        <!--<li data-target="#carouselIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselIndicators" data-slide-to="2"></li>-->
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="img/banner-cms.png" class="d-block w-100" alt="...">
+        </div>
+        <!--<div class="carousel-item">
+            <img src="img/slider-bg-01.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="img/slider-bg-01.jpg" class="d-block w-100" alt="...">
+        </div>-->
+    </div>
+    <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div class="container">
+    <!-- Ventajas -->
+    <div class="row py-5">
+        <div class="col-12 text-center">
+            <h2>VENTAJAS</h2>
+        </div>
+
+        <div class="col-1"></div>
+        <div class="col-10">
+            <div class="row text-center">
+                <div class="col-md-3">
+                    <img src="img/icon-flexibilidad.jpg" alt="" class="animated fadeIn">
+                    <h3 class="animated fadeIn delay-1s">Flexible</h3>
+                </div>
+                <div class="col-md-3">
+                    <img src="img/icon-ideas.jpg" alt="" class="animated fadeIn">
+                    <h3 class="animated fadeIn delay-1s">Ajustable</h3>
+                </div>
+                <div class="col-md-3">
+                    <img src="img/icon-amigable.jpg" alt="" class="animated fadeIn">
+                    <h3 class="animated fadeIn delay-1s">Amigable</h3>
+                </div>
+                <div class="col-md-3">
+                    <img src="img/icon-escalabilidad.jpg" alt="" class="animated fadeIn">
+                    <h3 class="animated fadeIn delay-1s">Escalable</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2>FUNCIONES</h2>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-6 functions-text">
+                    <div class="col-12"><i class="fas fa-arrow-circle-right"></i> Creación de artículos</div>
+                    <div class="col-12"><i class="fas fa-arrow-circle-right"></i> Creación de páginas</div>
+                    <div class="col-12"><i class="fas fa-arrow-circle-right"></i> Manejo de multimedia</div>
+                    <div class="col-12"><i class="fas fa-arrow-circle-right"></i> Manejo de archivos</div>
+                </div>
+                <div class="col-6 functions-text">
+                    <div class="col-12"><i class="fas fa-arrow-circle-right"></i> Manejo de usuarios</div>
+                    <div class="col-12"><i class="fas fa-arrow-circle-right"></i> Manejo de plantillas</div>
+                    <div class="col-12"><i class="fas fa-arrow-circle-right"></i> Shortcuts</div>
+                    <div class="col-12"><i class="fas fa-arrow-circle-right"></i> Seguridad</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Casos de éxito -->
+    <div class="my-5">
+
+        <div class="col-12 text-center">
+            <h2>CASOS DE ÉXITO</h2>
+        </div>
+
+        <div id="carouselCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+            <li data-target="#carouselCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselCaptions" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="py-4 px-4">
+                    <h5>First slide label</h5>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="py-4 px-4">
+                    <h5>Second slide label</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="py-4 px-4">
+                    <h5>Third slide label</h5>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Promo banner -->
+<div class="col-12 px-0">
+    <div class="promo-banner">
+        <div class="pt-5 px-5 text-center">
+            <h3>DESCARGA NUESTRO NUEVO CMS Y DISFRUTA DE LA FACILIDAD DE CREAR UN SITIO WEB INTUITIVO Y FUNCIONAL.</h3>
+        </div>
+        <div class="col-12 mt-1 pb-5 text-center">
+            <a class="btn btn-lg btn-success text-white" href="https://github.com/DevDrago/ProyectoExpertosIPAC2020" target="_blank" style="width: 200px;">
+                <i class="fab fa-github"></i> DESCARGAR
+            </a>
+        </div>
+    </div>
+</div>
+
+<%- include('../layout/footer') %>

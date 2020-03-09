@@ -1,0 +1,60 @@
+        <footer class="footer-style bg-dark">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-4 logo-footer py-4"><img src="img/logo-white.png" alt="" class="responsive-img"></div>
+                    <div class="col-8 py-4 text-right text-white">&copy; Copyright 2020 Somnia CMS.</div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-body text-center">
+                <h4 class="modal-title">Iniciar sesión</h4>
+                <div class="col-12">
+                    <div id="login-msg" class="alert alert-danger msg-hidden" role="alert">
+                        Datos de inicio erróneos.
+                    </div>
+                </div>
+                <form class="pt-3">
+                    <div class="form-group text-left">
+                        <label>Correo electrónico</label>
+                        <input type="email" class="form-control" id="login-email" placeholder="Escribe tu correo">
+                    </div>
+                    <div class="form-group text-left">
+                        <label>Contraseña</label>
+                        <input type="password" class="form-control" id="login-password" placeholder="Escribe tu contraseña">
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" required>
+                        <label class="form-check-label">Recordarme</label>
+                    </div>
+                    <div class="form-group">
+                        <a href="#" class="text-white text-decoration-none">Registrarse</a> |
+                        <a href="#" class="text-white text-decoration-none">Recuperar contraseña</a>
+                    </div>
+                    <a class="btn btn-secondary" data-dismiss="modal">Cerrar</a>
+                    <button id="sendLogin" type="submit" class="btn btn-info">Iniciar</button>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Boostrap 4.3.1 -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Font Awesome 5.10.1 -->
+    <script src="https://kit.fontawesome.com/f90d64be56.js"></script>
+    <!-- Own scripts -->
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/frontend-functions.js"></script>
+
+</body>
+</html>
