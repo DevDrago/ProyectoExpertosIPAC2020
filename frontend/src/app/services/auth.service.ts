@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../interfaces/user';
 import { JwtResponse } from '../interfaces/jwt-response';
 import { tap } from 'rxjs/operators';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
@@ -11,27 +11,26 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AuthService {
 
-  AUTH_SERVER: string = 'http://localhost:8888/api';
-  authSubject = new BehaviorSubject(false);
+  backend: string = 'http://localhost:8888/api';
+  //authSubject = new BehaviorSubject(false);
   private token: string;
 
   constructor(private httpClient: HttpClient, public jwtHelper: JwtHelperService ) { }
 
   register(user: User): Observable<JwtResponse> {
-    return this.httpClient.post<JwtResponse>(`${this.AUTH_SERVER}/register`,
+    return this.httpClient.post<JwtResponse>(`${this.backend}/usuarios/register`,
       user).pipe(tap(
         (res: JwtResponse) => {
+          console.log(res);
           if (res) {
-            // guardar token
-            console.log(res);
-            //this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
+            this.saveToken(res.auth, res.token);
           }
         })
       );
   }
 
   login(user: User): Observable<JwtResponse> {
-    return this.httpClient.post<JwtResponse>(`${this.AUTH_SERVER}/usuarios/login`,
+    return this.httpClient.post<JwtResponse>(`${this.backend}/usuarios/login`,
       user).pipe(tap(
         (res: JwtResponse) => {
           if (res) {
@@ -53,9 +52,9 @@ export class AuthService {
     this.token = token;
   }
 
-  private getToken(): string {
+  public getToken(): string {
     if (!this.token) {
-      this.token = localStorage.getItem("TOKEN");
+      this.token = localStorage.getItem("token");
     }
     return this.token;
   }

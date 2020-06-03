@@ -15,4 +15,4 @@ var esquema = new mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model('usuarios', esquema);
+module.exports = mongoose.model('usuarios', esquema, 'usuarios');

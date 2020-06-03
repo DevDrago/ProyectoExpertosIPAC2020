@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 
 const config = require('../config');
 
+//########### MÉTODOS ADMIN ###########//
+
 //Lista de todos los usuarios
 usuarioController.usuarios = (req, res)=>{
     usuario.find({},{_id: true, nombreUsuario:true})
@@ -31,7 +33,7 @@ usuarioController.usuario = (req, res)=>{
     });
 }
 
-//Registro - Creación de usuarios
+//Creación de usuarios
 usuarioController.crearUsuario = (req, res)=>{
 
     usuario.find({ 
@@ -83,6 +85,66 @@ usuarioController.crearUsuario = (req, res)=>{
 
 }
 
+//########### MÉTODOS USUARIOS ###########//
+usuarioController.register = (req, res)=>{
+
+    usuario.find({ 
+        $or: [
+            {nombreUsuario: { $regex: new RegExp("^" + req.body.nombreUsuario.toLowerCase(), "i") } }, 
+            {correo: { $regex: new RegExp("^" + req.body.correo.toLowerCase(), "i") } }
+        ] 
+    }, 
+    { _id: true, nombreUsuario:true, correo: true }, (err, result)=>{
+        if(err){
+            return res.status(500).json({
+                //err
+                mensaje: "Error en el servidor. Intente más tarde."
+            })
+        }
+
+        if(result.length > 0) {
+            return res.status(400).json({
+                mensaje: "El usuario o el correo ingresado ya existen en el sistema."
+            });
+        } else {
+            let u = new usuario(
+                {
+                    nombreUsuario: req.body.nombreUsuario,
+                    nombre: req.body.nombre,
+                    correo: req.body.correo,
+                    tipoUsuario: 2,
+                    contrasenia: bcrypt.hashSync(req.body.contrasenia, 10)
+                }
+            );
+            
+            u.save({}, function(err, result) {
+
+                let user = result[0];
+
+                if(err){
+                    return res.status(500).json({
+                        err
+                    });
+                }
+                if(result){
+                    req.session.idUsuario = user._id;
+                    req.session.tipoUsuario = user.tipoUsuario;
+                    let token = jwt.sign({ id: result._id, type: 2 }, config.secret, {expiresIn: 86400});
+                    res.status(200).json({ 
+                        auth: true, 
+                        token: token,
+                        type: 2,
+                        mensaje:"Se ha creado un nuevo usuario." 
+                    });
+                }
+            });
+        }
+    });
+
+}
+
+//########### MÉTODOS GENERALES ###########//
+
 //Iniciar sesión
 usuarioController.login = (req, res)=>{
 
@@ -115,13 +177,13 @@ usuarioController.login = (req, res)=>{
                     mensaje: "Usuario o contraseña incorrectos."
                 })
             } else {
-                //req.session.idUsuario = usuario._id;
-                //req.session.nombre = usuario.nombre;
+                req.session.idUsuario = usuario._id;
                 req.session.tipoUsuario = usuario.tipoUsuario;
                 let token = jwt.sign({ id: usuario._id, type: usuario.tipoUsuario }, config.secret, { expiresIn: 86400});
                 return res.status(200).json({
                     auth: true, 
                     token: token,
+                    type: usuario.tipoUsuario,
                     mensaje: "Usuario logueado."
                 })
             }

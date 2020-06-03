@@ -15,6 +15,6 @@ app.get('/contact', function(req, res) { res.render('user/contact') });
 //Rutas admin
 app.get('/admin', function(req, res) { res.render('admin/index') });
 
-app.listen('8888',function(){
+app.listen('8080',function(){
     console.log('Servidor levantado')
 });

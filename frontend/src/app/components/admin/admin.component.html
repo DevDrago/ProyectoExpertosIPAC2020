@@ -1,1 +1,32 @@
-<p>admin works!</p>
+<app-adminheader></app-adminheader>
+
+<main role="main" class="container" style="min-height: 100vh;">
+    <div class="row mt-3 text-center mx-auto">
+        <div class="col-lg-6 mx-auto"></div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-lg-12 col-sm-12">
+            <span class="saludo-admin">
+                <h1>¡Hola, {{ nombreAdmin }}!</h1>
+            </span>
+        </div>
+    </div>
+    <div id="cont-opciones" class="row mb-3">
+      <div class="col-lg-3 col-md-4 col-sm-6 mt-2" *ngFor="let opc of opcionesAdmin">
+        <div class="card-item card" [style.background-color]="opc.color" (click)="detalleOpcion(opc.url)">
+          <div class="row">
+              <div class="col-6 mx-auto text-center m-1 pl-2">
+                  <img src="{{ opc.icono }}" class="responsive-img">
+              </div>
+          </div>
+          <div class="row m-3 mt-4">
+              <section class="col">
+                  <h3 class="text-white font-weight-bolder">{{ opc.titulo }}</h3>
+              </section>
+          </div>
+        </div>
+      </div>
+    </div>
+</main>
+
+<app-adminfooter></app-adminfooter>

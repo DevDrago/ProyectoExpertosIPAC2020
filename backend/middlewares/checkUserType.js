@@ -1,5 +1,5 @@
 let checkUserType = (req, res, next) => {
-    if(req.session.tipoUsuario == 1) {
+    if(req.session.tipoUsuario == 2) {
         return next();
     } else {
         res.status(401).json({

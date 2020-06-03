@@ -1,1 +1,24 @@
-<p>register works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-4"></div>
+        <div class="col-sm-6 col-md-4">
+            <div class="text-center mt-5">
+                <img src="assets/img/logo-white.png" alt="Somnia Logo" class="responsive-img">
+            </div>
+            <div class="account-wall">
+                <h2 class="text-center">Registro</h2>
+                <form #frmRegister="ngForm" class="login-container form-signin" (ngSubmit)="onRegister(frmRegister)">
+                    <input type="text" class="form-control" placeholder="Nombre de usuario" name="nombreUsuario" ngModel required autofocus>
+                    <input type="password" class="form-control" placeholder="Contraseña" name="contrasenia" ngModel required>
+                    <br>
+                    <input type="text" class="form-control" placeholder="Nombre Completo" name="nombre" ngModel required autofocus>
+                    <input type="email" class="form-control" placeholder="Correo" name="correo" ngModel required>
+                    
+                    <br>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Registrarse</button>
+                </form>
+                <a href="/login" class="text-center new-account">Iniciar sesión</a>
+            </div>
+        </div>
+    </div>
+</div>

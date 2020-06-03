@@ -10,8 +10,6 @@ import { User } from '../../interfaces/user';
 })
 export class LoginComponent implements OnInit {
 
-  usuarios:any = [];
-
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -19,8 +17,12 @@ export class LoginComponent implements OnInit {
 
   onLogin(form): void {
     this.authService.login(form.value).subscribe(res => {      
-      console.log('response', res);
-      this.router.navigateByUrl('/admin'); //Redireccionar al Home
+      if(res['type'] == 1) {
+        this.router.navigateByUrl('/admin'); //Admin
+      }
+      else {
+        this.router.navigateByUrl('/user'); //User
+      }
     },
       error=>{
         console.log(error);
