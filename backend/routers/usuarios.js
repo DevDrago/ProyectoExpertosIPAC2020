@@ -5,9 +5,9 @@ const {checkAdminType} = require("../middlewares/checkAdminType")
 const {checkAuth} = require("../middlewares/checkAuth.js")
 
 //Rutas para el administrador
-router.get('/usuarios', [checkAuth,checkAdminType], usuarioController.usuarios);
-router.get('/usuarios/:id', [checkAuth,checkAdminType], usuarioController.usuario);
-router.post('/usuarios/crear-usuario', [checkAuth,checkAdminType], usuarioController.crearUsuario);
+router.get('/admin/usuarios', usuarioController.usuarios);
+router.get('/admin/usuarios/:id', [checkAuth], usuarioController.usuario);
+router.post('/admin/usuarios/crear-usuario', [checkAuth], usuarioController.crearUsuario);
 
 //Rutas para el usuario
 router.post('/usuarios/register', usuarioController.register);

@@ -6,14 +6,17 @@
                 <img src="assets/img/logo-white.png" alt="Somnia Logo" class="responsive-img">
             </div>
             <div class="account-wall">
+                <div class="px-2">
+                    <ngb-alert class="alert alert-danger" *ngIf="!staticAlertClosed && errorMessage" (close)="staticAlertClosed = true">{{ errorMessage }}</ngb-alert>
+                </div>
+
                 <h2 class="text-center">Registro</h2>
                 <form #frmRegister="ngForm" class="login-container form-signin" (ngSubmit)="onRegister(frmRegister)">
                     <input type="text" class="form-control" placeholder="Nombre de usuario" name="nombreUsuario" ngModel required autofocus>
-                    <input type="password" class="form-control" placeholder="Contraseña" name="contrasenia" ngModel required>
+                    <input type="password" class="form-control" placeholder="Contraseña" name="contrasenia" ngModel required autofocus>
                     <br>
                     <input type="text" class="form-control" placeholder="Nombre Completo" name="nombre" ngModel required autofocus>
-                    <input type="email" class="form-control" placeholder="Correo" name="correo" ngModel required>
-                    
+                    <input type="email" class="form-control" placeholder="Correo" name="correo" ngModel required autofocus>
                     <br>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Registrarse</button>
                 </form>

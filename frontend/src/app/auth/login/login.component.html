@@ -6,6 +6,9 @@
                 <img src="assets/img/logo-white.png" alt="Somnia Logo" class="responsive-img">
             </div>
             <div class="account-wall">
+                <div class="px-2">
+                    <ngb-alert class="alert alert-danger" *ngIf="!staticAlertClosed && errorMessage" (close)="staticAlertClosed = true">{{ errorMessage }}</ngb-alert>
+                </div>
                 <img class="profile-img" src="assets/img/photo.png"alt="">
                 <form #frmLogin="ngForm" class="login-container form-signin" (ngSubmit)="onLogin(frmLogin)">
                     <input type="text" class="form-control" placeholder="Correo" name="nombreUsuario" ngModel required autofocus>

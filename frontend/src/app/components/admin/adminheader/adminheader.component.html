@@ -11,9 +11,14 @@
                 <a class="nav-link" href="/">INICIO</a>
             </li>
         </ul>
-        <div class="row my-2 my-lg-0">
-            <a class="nav-link btn btn-sm btn-info text-white mx-3" data-toggle="modal" data-target="#LoginModal">
-                <i class="fas fa-power-off"></i> LOGIN
+        <div class="row my-2 my-lg-0" *ngIf="isLogged === false">
+            <a class="nav-link btn btn-sm btn-info text-white mx-3" href="/login">
+                INICIAR SESIÓN
+            </a>
+        </div>
+        <div class="row my-2 my-lg-0" *ngIf="isLogged === true">
+            <a class="nav-link btn btn-sm btn-info text-white mx-3" (click)="logout()">
+                CERRAR SESIÓN
             </a>
         </div>
     </div>

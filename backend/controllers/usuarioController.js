@@ -11,7 +11,7 @@ const config = require('../config');
 
 //Lista de todos los usuarios
 usuarioController.usuarios = (req, res)=>{
-    usuario.find({},{_id: true, nombreUsuario:true})
+    usuario.find({},{_id: true, nombreUsuario:true, nombre: true, correo: true, tipoUsuario: true})
     .then(result=>{
         res.send(result);
         res.end();
@@ -24,7 +24,7 @@ usuarioController.usuarios = (req, res)=>{
 
 // Buscar un usuario específico
 usuarioController.usuario = (req, res)=>{
-    usuario.find({_id: req.params.id}, { _id: true, nombreUsuario:true, correo: true }).then(result=>{
+    usuario.find({_id: req.params.id}, { _id: true, nombreUsuario:true, nombre: true, correo: true, tipoUsuario: true }).then(result=>{
         res.send(result[0]);
         res.end();
     }).catch(error=>{
@@ -119,16 +119,15 @@ usuarioController.register = (req, res)=>{
             
             u.save({}, function(err, result) {
 
-                let user = result[0];
-
                 if(err){
                     return res.status(500).json({
                         err
                     });
                 }
                 if(result){
-                    req.session.idUsuario = user._id;
-                    req.session.tipoUsuario = user.tipoUsuario;
+                    req.session.idUsuario = result._id;
+                    req.session.tipoUsuario = result.tipoUsuario;
+                    console.log(req.session);
                     let token = jwt.sign({ id: result._id, type: 2 }, config.secret, {expiresIn: 86400});
                     res.status(200).json({ 
                         auth: true, 
@@ -169,7 +168,7 @@ usuarioController.login = (req, res)=>{
             })
         } else {
             let usuario = result[0];
-
+            
             if (!bcrypt.compareSync(req.body.contrasenia, usuario.contrasenia)){
                 return res.status(403).json({
                     auth: false,

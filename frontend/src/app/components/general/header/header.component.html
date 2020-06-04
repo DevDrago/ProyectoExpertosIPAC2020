@@ -27,9 +27,16 @@
                     <a class="nav-link btn btn-sm btn-success text-white" href="https://github.com/DevDrago/ProyectoExpertosIPAC2020" target="_blank">
                         <i class="fab fa-github"></i> DESCARGAR
                     </a>
-                    <a class="nav-link btn btn-sm btn-info text-white mx-3" data-toggle="modal" data-target="#LoginModal">
-                        <i class="fas fa-power-off"></i> LOGIN
-                    </a>
+                    <div *ngIf="isLogged === false">
+                        <a class="nav-link btn btn-sm btn-info text-white mx-3" href="/login">
+                            INICIAR SESIÓN
+                        </a>
+                    </div>
+                    <div *ngIf="isLogged === true">
+                        <a class="nav-link btn btn-sm btn-info text-white mx-3" (click)="logout()">
+                            CERRAR SESIÓN
+                        </a>
+                    </div>
                 </div>
             </div>
         </nav>

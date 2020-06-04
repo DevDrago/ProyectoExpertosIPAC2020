@@ -1,1 +1,121 @@
-<p>manejo-usuarios works!</p>
+<app-adminheader></app-adminheader>
+
+<div class="container row my-5 mx-auto">
+    <div class="col p-3 table-bordered">
+        <div class="mb-2">
+            <a class="btn btn-primary text-white" (click)="nuevoUsuario()">Nuevo Usuario</a>
+        </div>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre de usuario</th>
+                    <th scope="col">Nombre Completo</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Tipo de usuario</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let us of usuarios; index as i">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ us.nombreUsuario }}</td>
+                    <td>{{ us.nombre }}</td>
+                    <td>{{ us.correo }}</td>
+                    <td>
+                        <ng-container *ngIf="us.tipoUsuario === 1;else second">Admin</ng-container>
+                        <ng-template #second>
+                            <ng-container>Usuario</ng-container>
+                        </ng-template>
+                    </td>
+                    <td>
+                        <a type="button" class="btn btn-success text-white" (click)="editarUsuario(us._id)">Editar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ng-template #modalNuevoUsuario let-modal>
+    <div class="modal-header text-white" style="background-color: #17a2b8">
+        <h4 class="modal-title" id="modal-basic-title">Crear nuevo usuario</h4>
+        <a type="button" class="close text-white" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </a>
+    </div>
+    <div class="modal-body">
+        <div>
+            <div class="px-2">
+                <ngb-alert class="alert alert-danger" *ngIf="!staticAlertClosed && errorMessage" (close)="staticAlertClosed = true">{{ errorMessage }}</ngb-alert>
+            </div>
+            
+            <div class="form-group">
+                <input type="text" class="form-control"  [(ngModel)]="nombreUsuario" placeholder="Nombre de usuario">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control"  [(ngModel)]="nombre" placeholder="Nombre Completo">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control"  [(ngModel)]="correo" placeholder="Correo">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control"  [(ngModel)]="contrasenia" placeholder="Contrasenia">
+            </div>
+            <div class="form-group">
+                <select type="text" class="form-control"  [(ngModel)]="tipoUsuario" placeholder="Tipo de Usuario" required>
+                    <option value="">- Seleccione uno -</option>
+                    <option value="1">Admin</option>
+                    <option value="2">Usuario</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark btn-success text-white" (click)="onCrearUsuario()">Guardar Usuario</button>
+        <button type="button" class="btn btn-outline-dark btn-info text-white" (click)="modal.close('Cerrar')">Cerrar</button>
+    </div>
+</ng-template>
+
+
+<ng-template #modalEditarUsuario let-modal>
+    <div class="modal-header text-white" style="background-color: #17a2b8">
+        <h4 class="modal-title" id="modal-basic-title">Crear nuevo usuario</h4>
+        <a type="button" class="close text-white" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </a>
+    </div>
+    <div class="modal-body">
+        <div>
+            <div class="px-2">
+                <ngb-alert class="alert alert-danger" *ngIf="!staticAlertClosed && errorMessage" (close)="staticAlertClosed = true">{{ errorMessage }}</ngb-alert>
+            </div>
+            
+            <div class="form-group">
+                <input type="text" class="form-control" value="{{ usuario.nombreUsuario }}" [(ngModel)]="nombreUsuario" placeholder="Nombre de usuario">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" value="{{ usuario.nombre }}"  [(ngModel)]="nombre" placeholder="Nombre Completo">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" value="{{ usuario.correo }}" [(ngModel)]="correo" placeholder="Correo">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" value="{{ usuario.constrasenia }}" [(ngModel)]="contrasenia" placeholder="Contrasenia">
+            </div>
+            <div class="form-group">
+                <select type="text" class="form-control" value="{{ usuario.tipoUsuario }}" [(ngModel)]="tipoUsuario" placeholder="Tipo de Usuario" required>
+                    <option value="">- Seleccione uno -</option>
+                    <option value="1">Admin</option>
+                    <option value="2">Usuario</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark btn-success text-white" (click)="onEditarUsuario()">Guardar Usuario</button>
+        <button type="button" class="btn btn-outline-dark btn-info text-white" (click)="modal.close('Cerrar')">Cerrar</button>
+    </div>
+</ng-template>
+
+<app-adminfooter></app-adminfooter>

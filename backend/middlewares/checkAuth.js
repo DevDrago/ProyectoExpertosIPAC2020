@@ -1,4 +1,5 @@
 let checkAuth = (req, res, next) => {
+    //console.log('check_auth', req);
     if(req.session.id) {
         return next();
     } else {

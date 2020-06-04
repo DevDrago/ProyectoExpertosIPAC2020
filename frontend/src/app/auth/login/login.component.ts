@@ -10,6 +10,9 @@ import { User } from '../../interfaces/user';
 })
 export class LoginComponent implements OnInit {
 
+  staticAlertClosed = false;
+  errorMessage:string = '';
+
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -23,9 +26,9 @@ export class LoginComponent implements OnInit {
       else {
         this.router.navigateByUrl('/user'); //User
       }
-    },
-      error=>{
-        console.log(error);
+    }, error => { 
+      this.errorMessage = error; 
+      setTimeout(() => this.staticAlertClosed = true, 5000);
     });
   }
 

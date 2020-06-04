@@ -10,7 +10,7 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class AdminComponent implements OnInit {
 
-  nombreAdmin:string = 'Drago';
+  nombreAdmin:string = 'Admin';
   opcionesAdmin:any = [];
   
   constructor(private adminService:AdminService, public router: Router) { }
